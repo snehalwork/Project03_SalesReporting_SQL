@@ -174,6 +174,110 @@ CREATE INDEX idx_fact_date_key ON fact_sales(date_key);
 
 ---
 
+## 📸 Project Screenshots
+
+### 1️⃣ Monthly Sales Report
+
+Generates monthly sales summary showing total quantity sold and total revenue.
+
+![Monthly Sales Report](screenshots/monthly_sales.png)
+
+---
+
+### 2️⃣ Quarterly Sales Report
+
+Aggregates sales by quarter for business reporting.
+
+![Quarterly Sales Report](screenshots/quarterly_sales.png)
+
+---
+
+### 3️⃣ Yearly Sales Report
+
+Displays yearly sales performance.
+
+![Yearly Sales Report](screenshots/yearly_sales.png)
+
+---
+
+### 4️⃣ Top Products Report
+
+Identifies the highest revenue-generating products.
+
+![Top Products Report](screenshots/top_products.png)
+
+---
+
+### 5️⃣ Top Customers Report
+
+Displays customers with the highest purchase value.
+
+![Top Customers Report](screenshots/top_customers.png)
+
+---
+
+### 6️⃣ Regional Sales Report
+
+Shows sales distribution across different regions.
+
+![Regional Sales Report](screenshots/regional_sales.png)
+
+---
+
+### 7️⃣ HAVING Clause Examples
+
+Demonstrates filtering aggregated data using the HAVING clause.
+
+![HAVING Clause](screenshots/having_clause.png)
+
+---
+
+### 8️⃣ Query Optimization using EXPLAIN
+
+The execution plan was analyzed using the `EXPLAIN` statement to understand how MySQL executes the query and whether indexes are being utilized.
+
+```sql
+EXPLAIN
+SELECT
+    dp.product_name,
+    SUM(fs.total_price) AS total_sales
+FROM fact_sales fs
+JOIN dim_product dp
+ON fs.product_key = dp.product_key
+GROUP BY
+    dp.product_name;
+```
+
+![EXPLAIN Query](screenshots/explain_query.png)
+
+---
+
+### 9️⃣ Indexes Created
+
+Indexes were created on the foreign key columns of the `fact_sales` table to improve JOIN and filtering performance.
+
+```sql
+CREATE INDEX idx_fact_customer_key
+ON fact_sales(customer_key);
+
+CREATE INDEX idx_fact_product_key
+ON fact_sales(product_key);
+
+CREATE INDEX idx_fact_region_key
+ON fact_sales(region_key);
+
+CREATE INDEX idx_fact_date_key
+ON fact_sales(date_key);
+```
+
+The indexes were verified using:
+
+```sql
+SHOW INDEX FROM fact_sales;
+```
+
+![Show Indexes](screenshots/show_indexes.png)
+
 ## 🚀 How to Run
 
 1. Open MySQL Workbench or VS Code with SQLTools.
@@ -238,3 +342,5 @@ After completing this project, I gained practical experience in:
 
 GitHub:
 https://github.com/snehalwork
+
+Thank you
