@@ -228,7 +228,7 @@ Shows sales distribution across different regions.
 
 Demonstrates filtering aggregated data using the HAVING clause.
 
-![HAVING Clause](screenshots/having.png)
+![HAVING Clause](screenshots/having_sales.png)
 
 ---
 
